@@ -1,0 +1,7 @@
+{
+  "query": {"visible": "query-vi.png", "infrared": "query-ir.png"},
+  "supports": [
+    {"visible": "support-vi.png", "infrared": "support-ir.png", "mask": "support-human-mask.png"}
+  ],
+  "text_prompt": "human"
+}

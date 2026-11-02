@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qdc-sam3"
+version = "1.0.0"
+description = "Quality-guided dual-canvas IR-VI few-shot segmentation"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "numpy>=1.26,<2",
+  "opencv-contrib-python-headless>=4.10,<5",
+  "Pillow>=10,<13",
+  "rectpack>=0.2.2,<0.3",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "torch>=2.5.1"]
+dev = ["pytest>=8", "build>=1", "ruff>=0.11"]
+
+[project.scripts]
+qdc-sam3 = "qdc_sam3.cli:main"
+qdc-sam3-evaluate = "qdc_sam3.evaluate:main"
+qdc-sam3-episodes = "qdc_sam3.episodes:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qdc_sam3"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]
